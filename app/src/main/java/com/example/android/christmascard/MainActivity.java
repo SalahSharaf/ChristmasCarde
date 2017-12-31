@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager vp;
-    public int[] img = {R.drawable.sparkles1, R.drawable.sparkles2, R.drawable.sparkles3, R.drawable.sparkles4};
+    public int[] img = {R.drawable.sparkles1, R.drawable.sparkles2, R.drawable.sparkles3, R.drawable.sparkles4,R.drawable.sparkles5};
     private static int RESULT_LOAD_IMAGE=1;
 
     @Override
