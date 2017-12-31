@@ -1,7 +1,6 @@
 package com.example.android.christmascard;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -10,22 +9,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import static android.support.v4.app.ActivityCompat.startActivityForResult;
-
-
 public class ViewPagerA extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutinflater;
-    private int[] img;
+    private int[] images;
+    private ImageView imageview;
+    private int positionC;
 
-    public ViewPagerA(Context context, int[] imgResources) {
+    public ViewPagerA(Context context, int[] images, int position) {
         this.context = context;
-        this.img = imgResources;
+        this.images = images;
+        this.positionC = position;
     }
 
     @Override
     public int getCount() {
-        return img.length;
+        return images.length;
     }
 
     @Override
@@ -36,14 +35,15 @@ public class ViewPagerA extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        position = positionC;
         layoutinflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = layoutinflater.inflate(R.layout.customimage, null);
-        ImageView image = view.findViewById(R.id.ImageView);
-        image.setImageResource(img[position]);
-        image.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageview = view.findViewById(R.id.ImageView);
+        imageview.setImageResource(images[position]);
+        imageview.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         container.addView(view, 0);
         TextView textview = view.findViewById(R.id.ImageNameTextView);
-        textview.setText(String.valueOf(img[position]));
+        textview.setText(String.valueOf(images[position]));
         return view;
     }
 
